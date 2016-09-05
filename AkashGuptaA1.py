@@ -73,7 +73,27 @@ def writelist(shopItem):
 
     return shopItem
 
+def markProduct(shopItem):
+    checkflag = True
+    if len(shopItem) == 0:
+        print("No  items in the list")
+    else:
+        readList_required(shopItem)
+        while checkflag:
+            try:
+                chooseItem = int(input("Enter the number of the item to mark as completed\n>>>"))
+                if chooseItem < 0 or chooseItem > len(shopItem) - 1:
+                    print("Invalid item number", end="\n\n")
+                else:
+                    item_marked = shopItem[chooseItem-1]
+                    print("{} marked as completed".format(item_marked["Name"]))
+                    checkflag = False
+            except ValueError:
+                print("Invalid input; enter a valid number", end="\n\n")
 
+    return item_marked
+
+def main():  # main function of the program shopping list
     print("Shopping List 1.0 - by Akash Gupta")
     shopItem = []
     listCompleted = []
