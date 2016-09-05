@@ -92,6 +92,22 @@ def markProduct(shopItem):
                 print("Invalid input; enter a valid number", end="\n\n")
 
     return item_marked
+def readList_completed(completedList):
+    count = 0
+    display = "Completed items:\n"
+    totalPrice = 0
+    if len(completedList) == 0:
+        print("No completed items")
+
+    else:
+        completedList = sorted(completedList, key=itemgetter('Priority'))
+        for eachItem in completedList:
+            display += "{0:}. {1:18}$ {2:.2f} ({3})\n".format(count, eachItem["Name"], eachItem["Price"],
+                                                           eachItem["Priority"])
+            count = count+1
+            totalPrice += eachItem["Price"]
+        print(display + "Total expected price for {} items: $ {}".format(count, totalPrice))
+
 
 def main():  # main function of the program shopping list
     print("Shopping List 1.0 - by Akash Gupta")
